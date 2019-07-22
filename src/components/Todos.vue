@@ -1,12 +1,15 @@
 <template>
     <div>
-        <h1>Todos Component</h1>
+        <div v-bind:key="todoEntry.id" v-for="todoEntry in todosArray">
+            <h3>{{todoEntry.title}}</h3>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Todos"
+        name: "Todos",
+        props: ["todosArray"]
     }
 </script>
 

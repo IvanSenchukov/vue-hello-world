@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Todos/>
+        <Todos v-bind:todosArray="todosArrayData"/>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
         components: {Todos: Todos},
         data() {
             return {
-                todos: [
+                todosArrayData: [
                     {
                         id: 1,
                         title: "Todo One",
