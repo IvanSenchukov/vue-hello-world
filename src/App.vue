@@ -16,23 +16,7 @@
         components: {Todos, Header, AddTodo},
         data() {
             return {
-                todosArrayData: [
-                    {
-                        id: 1,
-                        title: "Todo One",
-                        completed: false
-                    },
-                    {
-                        id: 2,
-                        title: "Todo Two",
-                        completed: true
-                    },
-                    {
-                        id: 3,
-                        title: "Todo Three",
-                        completed: false
-                    }
-                ]
+                todosArrayData: []
             }
         },
         methods: {
@@ -42,6 +26,12 @@
             addTodo(newTodo) {
                 this.todosArrayData = [...this.todosArrayData, newTodo];
             }
+        },
+        created() {
+            fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
+                .then(res => res.json())
+                .then(json => this.todosArrayData = json)
+                .catch(err => console.log(err));
         }
     }
 </script>
