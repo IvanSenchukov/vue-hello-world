@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Todos v-bind:todosArray="todosArrayData"/>
+        <Todos v-bind:todosArray="todosArrayData" v-on:del-todo="deleteTodo"/>
     </div>
 </template>
 
@@ -29,6 +29,11 @@
                         completed: false
                     }
                 ]
+            }
+        },
+        methods: {
+            deleteTodo(id) {
+                this.todosArrayData = this.todosArrayData.filter(todo => todo.id !== id);
             }
         }
     }
