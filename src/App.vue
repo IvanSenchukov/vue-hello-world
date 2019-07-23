@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Header/>
-        <AddTodo/>
+        <AddTodo v-on:add-todo="addTodo"/>
         <Todos v-bind:todosArray="todosArrayData" v-on:del-todo="deleteTodo"/>
     </div>
 </template>
@@ -38,6 +38,9 @@
         methods: {
             deleteTodo(id) {
                 this.todosArrayData = this.todosArrayData.filter(todo => todo.id !== id);
+            },
+            addTodo(newTodo) {
+                this.todosArrayData = [...this.todosArrayData, newTodo];
             }
         }
     }
