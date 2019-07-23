@@ -1,14 +1,18 @@
 <template>
     <div>
         <div v-bind:key="todoEntry.id" v-for="todoEntry in todosArray">
-            <h3>{{todoEntry.title}}</h3>
+            <TodoItem v-bind:todo="todoEntry"/>
         </div>
     </div>
 </template>
 
 <script>
+    import TodoItem from './TodoItem'
     export default {
         name: "Todos",
+        components: {
+            TodoItem
+        },
         props: ["todosArray"]
     }
 </script>
